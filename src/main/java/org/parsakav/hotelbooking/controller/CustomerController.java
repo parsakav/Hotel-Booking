@@ -31,7 +31,8 @@ public class CustomerController {
     } @GetMapping("findByEmail/{email}")
     public CustomerResponseDto getCustomerByEmail(@PathVariable("email") String email) {
         return customerService.findByEmail(email);
-    } @GetMapping("findByPhoneNumber/{number}")
+    }
+    @GetMapping("findByPhoneNumber/{number}")
     public CustomerResponseDto getCustomerByNumber(@PathVariable("number") String number) {
         return customerService.findByPhoneNumber(number);
     }
