@@ -15,6 +15,9 @@ Then database will be running . Now just run application with Jdk 17
 Postman exported collection is hotel-booking.postman_collection.json
 Import and test the API
 
+## AOP
+I used aspect oriented programming to logging and exception handling.
+
 ## Database
 resources/schema.sql is the schema of database
 
