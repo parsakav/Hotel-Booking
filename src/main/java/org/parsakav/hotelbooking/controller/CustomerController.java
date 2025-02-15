@@ -40,7 +40,7 @@ public class CustomerController {
     public boolean deleteCustomer(@Valid @RequestBody CustomerRequestDto customerRequestDto) {
         return customerService.delete(customerRequestDto);
     }
-    @PatchMapping
+    @PutMapping
     public boolean updateCustomer(@Valid @RequestBody CustomerRequestDto customerRequestDto) {
         return customerService.update(customerRequestDto);
     }

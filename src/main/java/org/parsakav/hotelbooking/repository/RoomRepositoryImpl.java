@@ -1,5 +1,6 @@
 package org.parsakav.hotelbooking.repository;
 
+import org.parsakav.hotelbooking.exceptions.DatabaseException;
 import org.parsakav.hotelbooking.exceptions.NoAvailableRoomException;
 import org.parsakav.hotelbooking.exceptions.NotIdProvidedException;
 import org.parsakav.hotelbooking.model.Room;
@@ -82,6 +83,16 @@ public class RoomRepositoryImpl implements RoomRepository {
             return jdbcTemplate.queryForObject(sql, new RoomRowMapper(), Room.RoomStatus.AVAILABLE.name());
         } catch (EmptyResultDataAccessException e) {
             throw new NoAvailableRoomException("No available room found.");
+        }
+    }
+    @Override
+    public Room findAvailableRoomByType(Room.RoomType type) {
+        String sql = "SELECT * FROM rooms WHERE status = ? AND type = ? LIMIT 1";
+        try {
+            return jdbcTemplate.queryForObject(sql, new RoomRowMapper(),
+                    Room.RoomStatus.AVAILABLE.name(), type.name());
+        } catch (EmptyResultDataAccessException e) {
+            throw new DatabaseException("There is not availale room ",e);
         }
     }
 }

@@ -9,4 +9,5 @@ public interface RoomRepository extends Crud<Room> {
     Room findById(long id);
     int update(Room room);
     Room findAvailableRoom();
+    public Room findAvailableRoomByType(Room.RoomType type);
 }
